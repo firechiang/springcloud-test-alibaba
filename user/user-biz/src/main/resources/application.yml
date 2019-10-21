@@ -1,0 +1,26 @@
+server:
+  # 禁用 Spring 生成404等错误信息，返回到前台
+  error:
+    whitelabel:
+      enabled: false
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+  #servlet:
+    #context-path: /springcloud_alibaba
+spring:
+  # JSON相关配置
+  jackson:
+    locale: zh_CN
+    default-property-inclusion: non-null
+  # 数据源相关配置
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/springcloud_alibaba?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&autoReconnect=true&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: jiang
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      auto-commit: true
+      # 测试连接是否有效的查询语句
+      connection-test-query: select 1

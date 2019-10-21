@@ -1,0 +1,33 @@
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 配置MySQL连接相关信息的配置文件 -->
+	<properties resource="mapper/config.properties" />
+
+	<context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+		<property name="beginningDelimiter" value="`" />
+		<property name="endingDelimiter" value="`" />
+        <property name="javaFileEncoding" value="UTF-8"/>
+		<plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+			<property name="mappers" value="tk.mybatis.mapper.common.Mapper" />
+			<property name="caseSensitive" value="true" />
+			<!-- 整合lombok自动生成Getter,Setter,ToString注解 -->
+			<property name="lombok" value="Getter,Setter,ToString"/>
+		</plugin>
+
+		<jdbcConnection driverClass="${jdbc.driverClass}" connectionURL="${jdbc.url}" userId="${jdbc.user}" password="${jdbc.password}">
+		</jdbcConnection>
+        <!-- 使用方法，在当前项目的pom目录执行命令：mvn mybatis-generator:generate 即可生成代码和XML（注意：一次只能生成一张表的信息，也就是下面配置的那张表） -->
+        <!-- Model 生成后所在地址  -->
+		<javaModelGenerator targetPackage="com.firecode.springcloud_alibaba.user.biz.domain.user" targetProject="src/main/java" />
+		<!-- Mapper XML 生成后所在地址 -->
+		<sqlMapGenerator targetPackage="mapper/user" targetProject="src/main/resources/mapper" />
+        <!-- Mapper 生成后所在地址 -->
+		<javaClientGenerator targetPackage="com.firecode.springcloud_alibaba.user.biz.mapper.user" targetProject="src/main/java" type="XMLMAPPER" />
+        <!-- 表相关信息配置  -->
+		<table tableName="user">
+			<generatedKey column="id" sqlStatement="JDBC" />
+		</table>
+	</context>
+</generatorConfiguration>
