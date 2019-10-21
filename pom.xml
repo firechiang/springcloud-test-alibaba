@@ -16,7 +16,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+		<spring-cloud.version>Greenwich.SR2</spring-cloud.version>
 		<spring-cloud-alibaba.version>2.1.0.RELEASE</spring-cloud-alibaba.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 		<mysql.version>5.1.48</mysql.version>
@@ -69,5 +69,6 @@
 	<modules>
 		<module>user</module>
         <module>registry-center-nacos</module>
+        <module>service-test</module>
   </modules>
 </project>

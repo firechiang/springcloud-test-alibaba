@@ -7,8 +7,11 @@ server:
   tomcat:
     uri-encoding: UTF-8
   #servlet:
-    #context-path: /springcloud_alibaba
+    #context-path: /user-service
 spring:
+  # 服务名称（注意：一定要配置服务名称否则无法注册到Nacos）
+  application:
+    name: user-service
   # JSON相关配置
   jackson:
     locale: zh_CN
@@ -24,3 +27,10 @@ spring:
       auto-commit: true
       # 测试连接是否有效的查询语句
       connection-test-query: select 1
+  # Spring Cloud 相关配置  
+  cloud:
+    # Nacos相关配置
+    nacos:
+      discovery:
+        enabled: true
+        server-addr: 192.168.83.143:8848      
