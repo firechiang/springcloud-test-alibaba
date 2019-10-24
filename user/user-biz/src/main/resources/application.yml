@@ -33,4 +33,8 @@ spring:
     nacos:
       discovery:
         enabled: true
+        # namespace要配置id而不是名称，且要先在Nacos控制台创建好（这个配置主要用户区分开发，测试，生产等环境）
+        namespace: 3899f87a-1741-4ab9-bca9-64352a882879
+        # 集群的名称这个可以顺便起
+        cluster-name: SZ
         server-addr: 192.168.83.143:8848      

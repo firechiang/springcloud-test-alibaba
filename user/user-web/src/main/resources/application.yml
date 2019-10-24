@@ -1,0 +1,22 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: user-web
+  # JSON相关配置
+  jackson:
+    locale: zh_CN
+    default-property-inclusion: non-null
+  # Spring Cloud 相关配置  
+  cloud:
+    # Nacos相关配置
+    nacos:
+      discovery:
+        enabled: true
+        # 是否注册当前服务
+        register-enabled: false
+        # 需要调用哪个namespace的服务（注意：这个配置的是id而不是名称）
+        namespace: 3899f87a-1741-4ab9-bca9-64352a882879
+        # 需要调用哪个集群的服务
+        cluster-name: SZ
+        server-addr: 192.168.83.143:8848  
