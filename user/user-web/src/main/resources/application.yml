@@ -1,6 +1,8 @@
 server:
   port: 8081
 spring:
+  main:
+    # 解决多Feign同名的错误    allow-bean-definition-overriding: true
   application:
     name: user-web
   # JSON相关配置
@@ -20,3 +22,39 @@ spring:
         # 需要调用哪个集群的服务
         cluster-name: SZ
         server-addr: 192.168.83.143:8848  
+# 配置Ribbon饿加载（默认是代码执行到了才加载，所以第一次可能会有点慢），这样可以加快首次执行效率
+ribbon:
+  okhttp:    enabled: true
+  eager-load:
+    # 开启饿加载（推荐生产使用）
+    enabled: true
+    # 指定Service名称（多个用逗号开）
+    clients: user-service    
+    
+# 配置Feign的日志级别（注意：一定要是debug，还有就是要定义Feign本身的日志级别（具体看springcloud_test/client-feign/README.md说明），否则无法生效）
+logging:
+  level:
+    com.firecode.springcloud_test.alibaba.user.feign.service.UserServiceClient: debug
+    
+# Feign相关配置    
+feign:
+  okhttp:
+    # 开启使用okhttp发起请求（使用连接池优化性能），而不是默认的UrlConnection
+    enabled: true
+  httpclient:
+    # 关闭HttpClient发起请求，因为我使用okhttp发起请求
+    enabled: false
+    # 连接超时时间
+    connection-timeout: 5000
+    # Feign最大连接数
+    max-connections: 200
+    # 单个路径最大连接数
+    max-connections-per-route:  50
+  client:
+    config:
+      # 服务名称（下面是Feign的日志级别，注意：还要配置 logging:level:com.firecode.springcloud_alibaba.user.api.service.UserService=debug否则服务生效）
+      #user-service: 
+      #  logger-level: full   
+      # 全局配置（所有服务都生效）
+      default:
+        logger-level: full   

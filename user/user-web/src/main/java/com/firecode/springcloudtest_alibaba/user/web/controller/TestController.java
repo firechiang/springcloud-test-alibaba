@@ -2,6 +2,7 @@ package com.firecode.springcloudtest_alibaba.user.web.controller;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.slf4j.Logger;
@@ -12,8 +13,12 @@ import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.firecode.springcloud_alibaba.user.api.domain.Dept;
+import com.firecode.springcloud_test.alibaba.user.feign.service.UserServiceClient;
 
 @RestController
 public class TestController {
@@ -27,6 +32,9 @@ public class TestController {
 	
 	@Autowired
 	private RestTemplate restTemplate1;
+	
+	@Autowired
+	private UserServiceClient userService;
 	
 	
 	
@@ -47,6 +55,38 @@ public class TestController {
 	public String bizServiceList1() {
 		ResponseEntity<String> response = restTemplate1.getForEntity("http://user-service/serviceName", String.class);
 		return response.getBody();
+	}
+	
+	/**
+	 * 使用Feign客户端（注意：这个路径不能和Service服务的路径一致）
+	 * @return
+	 */
+	@GetMapping("/bizServiceName2")
+	public String bizServiceList2() {
+		LOG.info("正在调用 UserService。。。");
+		return userService.getServiceName();
+	}
+	
+	/**
+	 * 使用Feign客户端（注意：这个路径不能和Service服务的路径一致）
+	 * @return
+	 */
+	@GetMapping("/test1")
+	public String test(@RequestParam("name") String name,@RequestParam("age") Integer age) {
+		
+		return userService.getTest(name, age);
+	}
+	
+	/**
+	 * 使用Feign客户端（注意：这个路径不能和Service服务的路径一致）
+	 * @return
+	 */
+	@GetMapping("/dept1")
+	public String test() {
+		Dept dept = new Dept();
+		dept.setNumber(ThreadLocalRandom.current().nextInt(1000));
+		dept.setName(UUID.randomUUID().toString());
+		return userService.getDept(dept);
 	}
 	
 	/**
