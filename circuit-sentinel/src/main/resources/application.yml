@@ -4,8 +4,8 @@ server:
 spring:
   application:    name: circuit-sentinel  cloud:    # 断路器 Sentinel相关配置
     sentinel:
-      #filter:
-        # 是否支持对Spring MVC的限流（注意：这个一般不配置）      #  enabled: false
+      filter:
+        # 是否支持对Spring MVC的限流（注意：这个一般不配置）        enabled: false
       transport:
         # 控制台地址
         dashboard: 192.168.83.143:8080
