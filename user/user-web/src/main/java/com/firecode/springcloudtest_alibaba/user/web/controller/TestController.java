@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.firecode.springcloud_alibaba.user.api.domain.Dept;
 import com.firecode.springcloud_test.alibaba.user.feign.service.UserServiceClient;
 
@@ -87,6 +88,18 @@ public class TestController {
 		dept.setNumber(ThreadLocalRandom.current().nextInt(1000));
 		dept.setName(UUID.randomUUID().toString());
 		return userService.getDept(dept);
+	}
+	
+	/**
+	 * 热点限流
+	 * @param name
+	 * @return
+	 */
+	@GetMapping("/hotspot")
+	@SentinelResource("hotspot")
+	public String hotspot(@RequestParam("name") String name) {
+		
+		return name+"-"+System.currentTimeMillis();
 	}
 	
 	/**
