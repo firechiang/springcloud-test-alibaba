@@ -20,12 +20,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<!-- 断路器 -->
+		<!-- 断路器（在Sentinel dashboard 控制台的机器列表中找到当前机器暴露出来的Sentinel的端口后，使用 http://192.168.83.1:8719/api 地址可查看Sentinel所有暴露出来的API） -->
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
 		</dependency>
-		<!-- 监控接口（里面有断路器Sentinel的监控接口） -->
+		<!-- 监控接口（里面有断路器Sentinel的监控接口，可使用：http://localhost:8085/actuator/sentinel 地址查看Sentinel的详细信息） -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>

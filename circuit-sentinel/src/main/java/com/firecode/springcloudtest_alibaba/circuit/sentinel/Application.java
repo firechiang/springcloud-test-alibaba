@@ -13,6 +13,8 @@ public class Application {
 		// com.alibaba.csp.sentinel.slots.block.flow.controller.RateLimiterController 排队等待限流处理逻辑
 		// com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule#passCheck         降级逻辑处理
 		// com.alibaba.csp.sentinel.slots.block.flow.param.ParamFlowChecker#passCheck 热点参数限流逻辑
+		// com.alibaba.csp.sentinel.transport.heartbeat.SimpleHttpHeartbeatSender     将本机的Sentinel服务注册到Sentinel Dashboard（Sentinel Dashboard再调用本机的Sentinel服务获取Sentinel的相关数据）
+		// com.alibaba.csp.sentinel.command.CommandHandler                            Sentinel Dashboard访问的Sentinel服务的接口，所有的API都是它的实现
 		SpringApplication.run(Application.class, args);
 	}
 }

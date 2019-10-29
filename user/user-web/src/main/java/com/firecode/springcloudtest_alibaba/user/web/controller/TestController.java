@@ -96,6 +96,7 @@ public class TestController {
 	 * @return
 	 */
 	@GetMapping("/hotspot")
+	// 标记热点限流资源
 	@SentinelResource("hotspot")
 	public String hotspot(@RequestParam("name") String name) {
 		
