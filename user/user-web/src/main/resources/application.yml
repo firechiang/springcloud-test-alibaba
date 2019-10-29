@@ -22,6 +22,9 @@ spring:
         # 需要调用哪个集群的服务
         cluster-name: SZ
         server-addr: 192.168.83.143:8848  
+    # 断路器 Sentinel相关配置
+    sentinel:      transport:
+        # 控制台地址        dashboard: 192.168.83.143:8080
 # 配置Ribbon饿加载（默认是代码执行到了才加载，所以第一次可能会有点慢），这样可以加快首次执行效率
 ribbon:
   okhttp:    enabled: true
@@ -57,4 +60,8 @@ feign:
       #  logger-level: full   
       # 全局配置（所有服务都生效）
       default:
-        logger-level: full   
+        logger-level: full
+        
+# 监控相关配置
+management:  endpoints:    web:
+      # 暴露所有监控接口      exposure:        include: '*'

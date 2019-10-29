@@ -6,11 +6,11 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.firecode</groupId>
-		<artifactId>user</artifactId>
+		<artifactId>springcloud-test-alibaba</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>user-web</artifactId>
-	<name>user-web</name>
+	<artifactId>circuit-sentinel</artifactId>
+	<name>circuit-sentinel</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -25,15 +25,10 @@
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
 		</dependency>
-        <!-- 监控接口（里面有断路器Sentinel的监控接口） -->
+		<!-- 监控接口（里面有断路器Sentinel的监控接口） -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.firecode</groupId>
-			<artifactId>user-feign</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

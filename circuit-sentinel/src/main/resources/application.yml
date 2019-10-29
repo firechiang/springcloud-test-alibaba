@@ -1,0 +1,16 @@
+server:
+  port: 8085
+  
+spring:  cloud:    # 断路器 Sentinel相关配置
+    sentinel:
+      transport:
+        # 控制台地址
+        dashboard: 192.168.83.143:8080
+        
+# 监控相关配置
+management:
+  endpoints:
+    web:
+      # 暴露所有监控接口
+      exposure:
+        include: '*'                  

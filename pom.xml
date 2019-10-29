@@ -70,5 +70,6 @@
 		<module>user</module>
         <module>registry-center-nacos</module>
         <module>service-test</module>
+    <module>circuit-sentinel</module>
   </modules>
 </project>
