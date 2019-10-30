@@ -15,8 +15,5 @@ public interface UserService {
 	@GetMapping("/test")
 	public String getTest(@RequestParam("name") String name,@RequestParam("age") Integer age);
 	
-	/*
-	 * @GetMapping("/dept") public String getDept(@RequestParam Dept dept);
-	 */
 
 }

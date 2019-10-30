@@ -5,7 +5,7 @@ spring:
   application:    name: circuit-sentinel  cloud:    # 断路器 Sentinel相关配置
     sentinel:
       filter:
-        # 是否支持对Spring MVC的限流（注意：这个一般不配置）        enabled: false
+        # 是否开启对Spring MVC所有的请求进行限流，默认是true（注意：这个一般不配置）        enabled: false
       transport:
         # 控制台地址
         dashboard: 192.168.83.143:8080
@@ -15,7 +15,16 @@ spring:
         port: 8719
         # Sentinel和Sentinel Dashboard的心跳时间（默认 10000）
         #heartbeat-interval-ms: 1000
-        
+
+# Feign相关配置        
+feign:
+  # 开启Feign整合Sentinel（使用方法：开启后在控制台为Feign调用的接口配置限流即可）
+  #（注意：不推荐使用，写回调太麻烦（写回调的列子可参考user-web），再一个限流还是在服务端自己做比较好）  sentinel:    enabled: true
+          
+# RestTemplate整合Sentinel的相关配置
+resttemplate:  sentinel:
+    # 是否可以使用@SentinelRestTemplate注解为RestTemplate所请求的地址进行限流    enabled: true     
+    
 # 监控相关配置
 management:
   endpoints:

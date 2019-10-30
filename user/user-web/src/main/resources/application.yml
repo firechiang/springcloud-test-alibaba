@@ -41,6 +41,9 @@ logging:
     
 # Feign相关配置    
 feign:
+  # 开启Feign整合Sentinel（使用方法：开启后在控制台为Feign调用的接口配置限流即可）（注意：不推荐使用，写回调太麻烦，再一个限流还是在服务端自己做比较好）
+  sentinel:
+    enabled: true
   okhttp:
     # 开启使用okhttp发起请求（使用连接池优化性能），而不是默认的UrlConnection
     enabled: true
