@@ -1,4 +1,4 @@
-#### 服务断路器 Sentinel，[官方文档](https://github.com/alibaba/Sentinel/wiki)
+#### 服务断路器 Sentinel，[官方文档](https://github.com/alibaba/Sentinel/wiki)，（注意：主流的容错方案有，超时，限流，断路器，仓壁模式。Sentinel没有实现仓壁模式）
 #### 搭建 Sentinel 控制台
 ```bash
 # 下载控制台安装包

@@ -1,7 +1,11 @@
 package com.firecode.springcloudtest_alibaba.circuit.sentinel.hgandler;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-
+/**
+ * 限流后的回调函数
+ * @author JIANG
+ *
+ */
 public class BlockAndFallbackHandler {
 	
 	/**

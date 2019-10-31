@@ -27,8 +27,14 @@ public class TestController {
 	@SentinelResource("hotspot")
 	public String test() {
 		// 手动配置流控规则
-		initRule();
+		//initRule();
 		return "我测试接口";
+	}
+	@GetMapping("/test1")
+	public String test1() {
+		// 手动配置流控规则
+		//initRule();
+		return "我测试接口1";
 	}
 	
 	/**
